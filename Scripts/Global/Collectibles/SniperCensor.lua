@@ -1,23 +1,14 @@
 function SniperCensor(Ob)
 	if ( not Ob ) then
-		Ob = CreateObject("Global.Props.HeldObject")
-
+		Ob = CreateObject('Global.Props.HeldObject')
 		Ob.meshName = 'characters/censorlevel2.plb'
-
-		Ob.displayName = "/GLSNIPCEN/"
-
+		Ob.displayName = '/GLSNIPCEN/'
 		Ob.pickupSpriteName = 'censorsniper'
-
 		Ob.clutchAnim = 'Anims/DartNew/BodyParts/Hold_FistLoosePalmIn_ArmLf.jan'
-
 		Ob.collSphereRadius = 30
-
 		Ob.bAutoSelect = 1
-
 		Ob.bPutAwayOnMelee = 0
-
 		Ob.level = 'all'
-
 		Ob.HeldPosX = -10
 		Ob.HeldPosY = 20
 		Ob.HeldPosZ = 0
@@ -27,11 +18,8 @@ function SniperCensor(Ob)
 		Ob.scaleX = 0.25
 		Ob.scaleY = 0.25
 		Ob.scaleZ = 0.25
-
 		Ob.bUseOnly = 1
-
 		Ob.bUseRangedState = 0
-		
 		Ob.bCanShoot = 0
 		Ob.rangedCheckNoLineOfSight = -1
 		Ob.projectileType = 'Global.Collectibles.SniperProjectile'
@@ -62,16 +50,14 @@ function SniperCensor(Ob)
 	end
 
 	function Ob:getProjectile()
-        local projectile = nil
+		local projectile = nil
 		projectile = self.projectilePool:get()
 		if (projectile) then
 			projectile.censor = self
 		end
-	
 		if (self.setupProjectile) then
 			self:setupProjectile(projectile)
 		end
-
 		return projectile
 	end
 
@@ -101,7 +87,6 @@ function SniperCensor(Ob)
 		if (self.canShootNo == 1) then self:onFireProjectile() end
 	end
 
-	-- If you add any timer stuff, make sure to pass unhandled ids to parent.
 	function Ob:onTimer(id)
 		if(id == self.TIMER_ID) then
 			self.canShootNo = 1
